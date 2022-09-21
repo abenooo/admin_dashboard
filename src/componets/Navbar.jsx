@@ -23,5 +23,14 @@ const Nav = styled.nav`
 display:flex;
 justify-content: space-between;
 color: white;
-
+.title{
+    h1 {
+        span{
+            margin-left: 0.5rem;
+             color: #ffc107;
+             letter-spacing: 0.2rem;
+             font-family: "Permanent Marker", cursive;
+        }
+    }
+}
 `;
