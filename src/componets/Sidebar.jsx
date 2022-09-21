@@ -174,4 +174,18 @@ const Section = styled.section`
       }
     }
   }
+  .logout{
+    padding: 0.3rem 1rem;
+    border-radius: 0.6rem;
+    &:hover{
+      background-color: #000;
+    }
+    a{
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      color: white;
+    }
+  }
 `;
