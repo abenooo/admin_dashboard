@@ -1,9 +1,9 @@
 import React from 'react'
-
-function Analytics() {
+import styled from 'styled-components'
+export default function Analytics() {
   return (
-    <div>Analytics</div>
+    <Section>Analytics</Section>
   )
 }
 
-export default Analytics
+const Section = styled.section``;

@@ -30,6 +30,7 @@ const Nav = styled.nav`
         color: #ffc107;
         letter-spacing: 0.2rem;
         font-family: "Permanent Marker", cursive;
+        
       }
     }
   }
