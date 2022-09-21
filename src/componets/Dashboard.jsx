@@ -14,9 +14,7 @@ export default function Dashboard() {
           <FAQ />
         </div>
         <div className="row_two">
-          {/* <Earning /> */}
-          {/* <Trasfer /> */}
-          {/* <Profile/> */}
+        
         </div>
       </div>
     </Section>
