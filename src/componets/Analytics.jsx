@@ -8,53 +8,73 @@ import { FiActivity } from "react-icons/fi";
 export default function Analytics() {
   return (
     <Section>
-      <div className="analytic ">
-        <div className="logo">
-          <BsFillCalendar2WeekFill />
-        </div>
-        <div className="content">
-          <h5>Category</h5>
-          <h2>682</h2>
-        </div>
+    <div className="analytic ">
+      <div className="content">
+        <h5>Number of Archive</h5>
+        <h2>682</h2>
       </div>
-      <div className="analytic">
-        <div className="logo">
-          <IoStatsChart />
-        </div>
-        <div className="content">
-          <h5>Number of Archive</h5>
-          <h2>5350</h2>
-        </div>
-      </div>
-      <div className="analytic">
-        <div className="logo">
-          <BiGroup />
-        </div>
-        <div className="content">
-          <h5> Number of User</h5>
-          <h2>31</h2>
-        </div>
-      </div>
-      <div className="analytic ">
       <div className="logo">
-          <FiActivity />
-        </div>
-        <div className="content">
-          <h5>Other</h5>
-          <h2>0000</h2>
-        </div>
-
+        <BsFillCalendar2WeekFill />
       </div>
-    </Section>
+    </div>
+    <div className="analytic">
+      <div className="logo">
+        <IoStatsChart />
+      </div>
+      <div className="content">
+        <h5>Category</h5>
+        <h2>350</h2>
+      </div>
+    </div>
+    <div className="analytic">
+      <div className="logo">
+        <BiGroup />
+      </div>
+      <div className="content">
+        <h5>Number of Users</h5>
+        <h2>321</h2>
+      </div>
+    </div>
+    <div className="analytic ">
+      <div className="content">
+        <h5>Activity</h5>
+        <h2>000</h2>
+      </div>
+      <div className="logo">
+        <FiActivity />
+      </div>
+    </div>
+  </Section>
   );
 }
 
 const Section = styled.section`
-display: grid;
-grid-template-columns: repeat(2, 1fr);
-gap: 1rem;
-.analytic {
-  ${cardStyle};
-  padding: 1rem;
-}
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  .analytic {
+    ${cardStyle};
+    padding: 1rem;
+    display: flex;
+    justify-content:space-evenly ;
+    align-items: center;
+    gap: 1rem;
+    transition: 0.5s ease-in-out;
+    &:hover{
+      background-color: #ffc107;
+      color: black;
+      svg{
+        color: white;
+      }
+    }
+    .logo{
+      background-color: black;
+      border-radius: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      font-size: 1.5rem;
+    }
+  }
 `;
