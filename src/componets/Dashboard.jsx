@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import FAQ from "./FAQ";
 import styled from "styled-components";
-import Analytics from "./Analytics";
+import Card from "./Card";
 
 export default function Dashboard() {
   return (
@@ -10,7 +10,7 @@ export default function Dashboard() {
       <Navbar />
       <div className="grid">
         <div className="row_one">
-          <Analytics />
+          <Card />
           <FAQ />
         </div>
         <div className="row_two">
