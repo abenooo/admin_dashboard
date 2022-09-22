@@ -26,9 +26,9 @@ const faqs = [
         <h2>Information for Admins</h2>
       </div>
       <div className="faqs">
-        {faqs.map((faq) => {
+        {faqs.map((faq,index) => {
           return (
-            <div className="faq">
+            <div className="faq" key={index}>
               <div className="info">
                 {faq.icon}
                 <h4>{faq.text}</h4>
