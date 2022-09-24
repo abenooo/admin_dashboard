@@ -5,9 +5,9 @@ export default function Navbar() {
   return (
     <Nav>
       <div className="title">
-        <h4>Hi Kishan,</h4>
+        <h4>Hi Abenezer,</h4>
         <h1>
-          Welcome to <span>MY TAXI DASHBOARD</span>
+          Welcome to <span>CBE File Management System</span>
         </h1>
       </div>
       <div className="search">

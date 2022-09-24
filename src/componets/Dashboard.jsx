@@ -3,27 +3,8 @@ import styled from "styled-components";
 import Card from "./Card";
 import FAQ from "./FAQ";
 import Navbar from "./Navbar";
-import scrollreveal from "scrollreveal";
 export default function Dashboard() {
-  useEffect(() => {
-    const sr = scrollreveal({
-      origin: "bottom",
-      distance: "80px",
-      duration: 2000,
-      reset: false,
-    });
-    sr.reveal(
-      `
-        nav,
-        .row__one,
-        .row__two
-    `,
-      {
-        opacity: 0,
-        interval: 100,
-      }
-    );
-  }, []);
+ 
   return (
     <Section>
       <Navbar />
@@ -32,11 +13,9 @@ export default function Dashboard() {
           <Card />
           <FAQ />
         </div>
-        <div className="row__two">
-          {/* <Earnings />
-          <Transfers />
-          <Profile /> */}
-        </div>
+        {/* <div className="row__two">
+       
+        </div> */}
       </div>
     </Section>
   );
