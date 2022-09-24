@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { cardStyle } from "./ReusableStyles";
+import { cardStyles } from "./ReusableStyles";
 import { BsFillCalendar2WeekFill } from "react-icons/bs";
 import { IoStatsChart } from "react-icons/io5";
 import { BiGroup } from "react-icons/bi";
@@ -73,7 +73,7 @@ const Section = styled.section`
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   .analytic {
-    ${cardStyle};
+    ${cardStyles};
     padding: 1rem;
     display: flex;
     justify-content: space-evenly;

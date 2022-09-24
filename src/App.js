@@ -12,4 +12,6 @@ export default function App() {
 }
 
 // styled componets
-const Div = styled.div``;
+const Div = styled.div`
+position: relative;
+`;

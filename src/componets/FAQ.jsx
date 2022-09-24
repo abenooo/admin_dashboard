@@ -4,7 +4,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { AiFillCalendar } from "react-icons/ai";
 import { MdTimelapse } from "react-icons/md";
 import { IoMdCash } from "react-icons/io";
-import { cardStyle } from "./ReusableStyles";
+import { cardStyles } from "./ReusableStyles";
 export default function FAQ() {
 const faqs = [
     {
@@ -42,7 +42,7 @@ const faqs = [
   )
 };
 const Section = styled.section`
-  ${cardStyle};
+  ${cardStyles};
   .title {
     h2 {
       color: #ffc107;

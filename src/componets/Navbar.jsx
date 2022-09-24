@@ -4,17 +4,15 @@ import { BiSearch } from "react-icons/bi";
 export default function Navbar() {
   return (
     <Nav>
-      {/* left navbar */}
       <div className="title">
-        <h4>Hi Abenezer Kifle</h4>
+        <h4>Hi Kishan,</h4>
         <h1>
-          Welcome to <span>CBE File Management System</span>
+          Welcome to <span>MY TAXI DASHBOARD</span>
         </h1>
       </div>
-      {/* right navabr */}
       <div className="search">
         <BiSearch />
-        <input type="text" placeholder="type here to search" />
+        <input type="text" placeholder="Search" />
       </div>
     </Nav>
   );
@@ -28,9 +26,8 @@ const Nav = styled.nav`
       span {
         margin-left: 0.5rem;
         color: #ffc107;
-        letter-spacing: 0.2rem;
         font-family: "Permanent Marker", cursive;
-        
+        letter-spacing: 0.2rem;
       }
     }
   }
@@ -48,13 +45,27 @@ const Nav = styled.nav`
       background-color: transparent;
       border: none;
       color: #ffc107;
+      font-family: "Permanent Marker", cursive;
       letter-spacing: 0.3rem;
-      &::placeholder{
-        font-family: "Permanent Marker", cursive;
-        color: #ffc107;
-      }
-      &:focus{
+      &:focus {
         outline: none;
+      }
+      &::placeholder {
+        color: #ffc107;
+        font-family: "Permanent Marker", cursive;
+      }
+    }
+  }
+  @media screen and (min-width: 280px) and (max-width: 1080px) {
+    flex-direction: column;
+    .title {
+      h1 {
+        span {
+          display: block;
+
+          margin: 1rem 0;
+          /* letter-spacing: 0; */
+        }
       }
     }
   }
