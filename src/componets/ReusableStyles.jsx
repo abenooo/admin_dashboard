@@ -5,4 +5,9 @@ export const cardStyles = css`
   border-radius: 1rem;
   background-color: #212121;
   color: white;
+  @media screen and (min-width: 280px) and (max-width: 1080px) {
+    margin-right: -10px;
+    margin-left: -2px;
+   
+  }
 `;

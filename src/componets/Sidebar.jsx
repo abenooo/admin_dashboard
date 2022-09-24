@@ -10,44 +10,45 @@ import { FiLogOut } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import scrollreveal from "scrollreveal";
+import { BsBank } from "react-icons/bs";
 export default function Sidebar() {
   const [currentLink, setCurrentLink] = useState(1);
   const [navbarState, setNavbarState] = useState(false);
   const html = document.querySelector("html");
   html.addEventListener("click", () => setNavbarState(false));
 
-  useEffect(() => {
-    const sr = scrollreveal({
-      origin: "left",
-      distance: "80px",
-      duration: 1000,
-      reset: false,
-    });
+  // useEffect(() => {
+  //   const sr = scrollreveal({
+  //     origin: "left",
+  //     distance: "80px",
+  //     duration: 1000,
+  //     reset: false,
+  //   });
 
-    sr.reveal(
-      `
-          .brand,
-          .links>ul>li:nth-of-type(1),
-      .links>ul>li:nth-of-type(2),
-      .links>ul>li:nth-of-type(3),
-      .links>ul>li:nth-of-type(4),
-      .links>ul>li:nth-of-type(5),
-      .links>ul>li:nth-of-type(6),
-      .logout
-      `,
-      {
-        opacity: 0,
-        interval: 300,
-      }
-    );
-  }, []);
+  //   sr.reveal(
+  //     `
+  //         .brand,
+  //         .links>ul>li:nth-of-type(1),
+  //     .links>ul>li:nth-of-type(2),
+  //     .links>ul>li:nth-of-type(3),
+  //     .links>ul>li:nth-of-type(4),
+  //     .links>ul>li:nth-of-type(5),
+  //     .links>ul>li:nth-of-type(6),
+  //     .logout
+  //     `,
+  //     {
+  //       opacity: 0,
+  //       interval: 300,
+  //     }
+  //   );
+  // }, []);
 
   return (
     <>
       <Section>
         <div className="top">
           <div className="brand">
-            <FaTaxi />
+            <BsBank />
             <span>Admin</span>
           </div>
           <div className="toggle">
@@ -81,6 +82,18 @@ export default function Sidebar() {
                   <RiDashboard2Fill />
                   <span> Manage User</span>
                 </a>
+                <ul>
+                  <a href="#">
+                    <li className={currentLink === 7 ? "active" : "none"}>
+                      Add User
+                    </li>
+                  </a>
+                  <a href="#">
+                    <li className={currentLink === 8 ? "active" : "none"}>
+                      <span>List User</span>
+                    </li>
+                  </a>
+                </ul>
               </li>
               <li
                 className={currentLink === 3 ? "active" : "none"}
@@ -146,8 +159,20 @@ export default function Sidebar() {
             >
               <a href="#">
                 <RiDashboard2Fill />
-                <span> Riders</span>
+                <span> Manage User</span>
               </a>
+              <ul>
+                <a href="#">
+                  <li className={currentLink === 7 ? "active" : "none"}>
+                    Add User
+                  </li>
+                </a>
+                <a href="#">
+                  <li className={currentLink === 8 ? "active" : "none"}>
+                    <span>List User</span>
+                  </li>
+                </a>
+              </ul>
             </li>
             <li
               className={currentLink === 3 ? "active" : "none"}
@@ -155,7 +180,7 @@ export default function Sidebar() {
             >
               <a href="#">
                 <FaAddressCard />
-                <span> Payment Details</span>
+                <span> Manage Archive</span>
               </a>
             </li>
             <li
@@ -164,7 +189,7 @@ export default function Sidebar() {
             >
               <a href="#">
                 <GiTwirlCenter />
-                <span> Learning Center</span>
+                <span> Manage Category</span>
               </a>
             </li>
             <li
@@ -173,7 +198,7 @@ export default function Sidebar() {
             >
               <a href="#">
                 <BsFillChatTextFill />
-                <span> FAQs</span>
+                <span> Manage Profile</span>
               </a>
             </li>
             <li
