@@ -79,7 +79,7 @@ export default function Sidebar() {
                 className={currentLink === 2 ? "active" : "none"}
                 onClick={() => setCurrentLink(2)}
               >
-               <Link to='/profile'>
+               <Link to='/listUser'>
                   <RiDashboard2Fill />
                   <span> Manage User</span>
                 </Link>
@@ -100,10 +100,10 @@ export default function Sidebar() {
                 className={currentLink === 3 ? "active" : "none"}
                 onClick={() => setCurrentLink(3)}
               >
-                <a href="#">
+                <Link to="/listArchive">
                   <FaAddressCard />
                   <span> Manage Archive</span>
-                </a>
+                </Link>
               </li>
               <li
                 className={currentLink === 4 ? "active" : "none"}

@@ -13,7 +13,7 @@ export default function ListUser() {
             <AiOutlinePlus />
           </div>
           <div className="content">
-            <h5>Add Category</h5>
+            <h5>Add User</h5>
           </div>
         </div>
       </div>
