@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { MdSpaceDashboard } from "react-icons/md";
 import { RiDashboard2Fill } from "react-icons/ri";
-import { FaAddressCard, FaTaxi } from "react-icons/fa";
+import { FaAddressCard } from "react-icons/fa";
 import { GiTwirlCenter } from "react-icons/gi";
 import { BsFillChatTextFill } from "react-icons/bs";
 import { IoSettings } from "react-icons/io5";
@@ -109,10 +109,10 @@ export default function Sidebar() {
                 className={currentLink === 4 ? "active" : "none"}
                 onClick={() => setCurrentLink(4)}
               >
-                <a href="#">
+               <Link to='/listCategory'>
                   <GiTwirlCenter />
                   <span> Manage Category</span>
-                </a>
+                </Link>
               </li>
               <li
                 className={currentLink === 5 ? "active" : "none"}
