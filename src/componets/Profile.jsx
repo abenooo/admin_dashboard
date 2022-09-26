@@ -1,9 +1,16 @@
-import React from 'react'
-
+import React from "react";
+import Sidebar from "./Sidebar";
+import profile from './profile.css'
 function Profile() {
   return (
-    <div>Profile</div>
-  )
+    <>
+      <Sidebar />
+      <div className="profile">
+        <h3>this is profile page</h3>
+        <p>dshfkjhdsfh</p>
+      </div>
+    </>
+  );
 }
 
-export default Profile
+export default Profile;

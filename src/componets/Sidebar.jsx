@@ -69,7 +69,7 @@ export default function Sidebar() {
                 className={currentLink === 1 ? "active" : "none"}
                 onClick={() => setCurrentLink(1)}
               >
-                <a href="#">
+                <a href="/Profile">
                   <MdSpaceDashboard />
                   <span> Dashboard</span>
                 </a>
@@ -82,7 +82,7 @@ export default function Sidebar() {
                   <RiDashboard2Fill />
                   <span> Manage User</span>
                 </a>
-                <ul>
+                {/* <ul>
                   <a href="#">
                     <li className={currentLink === 7 ? "active" : "none"}>
                       Add User
@@ -93,7 +93,7 @@ export default function Sidebar() {
                       <span>List User</span>
                     </li>
                   </a>
-                </ul>
+                </ul> */}
               </li>
               <li
                 className={currentLink === 3 ? "active" : "none"}
@@ -219,7 +219,7 @@ export default function Sidebar() {
 const Section = styled.section`
   position: fixed;
   left: 0;
-  background-color: #212121;
+  background-color: #06293d;
   height: 100vh;
   width: 18vw;
   display: flex;
@@ -291,7 +291,7 @@ const Section = styled.section`
     padding: 0.3rem 1rem;
     border-radius: 0.6rem;
     &:hover {
-      background-color: #da0037;
+      background-color: #0d0b0c;
     }
     a {
       text-decoration: none;

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+// import { Link } from 'react-router-dom';
 import { cardStyles } from "./ReusableStyles";
 import { BsFillCalendar2WeekFill } from "react-icons/bs";
 import { IoStatsChart } from "react-icons/io5";
@@ -14,7 +15,7 @@ export default function Card() {
         <div className="content">
           <h5>Number of Archive</h5>
           <h2>682</h2>
-          <a className="view-all" href="#">
+          <a href="/Profile" className="view-all">
             View all <HiArrowNarrowRight />
           </a>
         </div>

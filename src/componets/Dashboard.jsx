@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import Card from "./Card";
 import FAQ from "./FAQ";
-import Navbar from "./Navbar";
 export default function Dashboard() {
  
   return (
     <Section>
-      <Navbar />
       <div className="grid">
         <div className="row__one">
           <Card />
