@@ -4,9 +4,12 @@ import Sidebar from "./componets/Sidebar";
 import Dashboard from "./componets/Dashboard";
 import AddCategory from "./componets/Category/AddCategory";
 import ListCategory from "./componets/Category/ListCategory";
-// import Profile from "./componets/Profile";
+import AddUser from "./componets/User/AddUser";
+import ListUser from "./componets/User/ListUser";
+import AddArchive from "./componets/Archive/AddArchive"
+import ListArchive from "./componets/Archive/ListArchive";
 import { Routes, Route } from "react-router-dom";
-import NotFound from './componets/404'
+import NotFound from "./componets/404";
 import Navbar from "./componets/Navbar";
 export default function App() {
   return (
@@ -17,9 +20,13 @@ export default function App() {
       {/* <Profile /> */}
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="addCategory"  element={<AddCategory />} />
+        <Route path="addCategory" element={<AddCategory />} />
         <Route path="listCategory" element={<ListCategory />} />
-        <Route path='*' element={<NotFound />} />
+        <Route path="addUser" element={<AddUser />} />
+        <Route path="listUser" element={<ListUser />} />
+        <Route path="addArchive" element={<AddArchive />} />
+        <Route path="listArchive" element={<ListArchive />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Div>
   );
