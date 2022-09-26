@@ -1,16 +1,20 @@
 import React from "react";
-import Sidebar from "./Sidebar";
 import profile from './profile.css'
+import styled from "styled-components";
+import Navbar from "./Navbar";
 function Profile() {
   return (
     <>
-      <Sidebar />
-      <div className="profile">
+     {/* <Navbar /> */}
+
+      <Div className="profile">
         <h3>this is profile page</h3>
         <p>dshfkjhdsfh</p>
-      </div>
+      </Div>
     </>
   );
 }
-
+const Div = styled.div`
+  ${profile}
+`
 export default Profile;

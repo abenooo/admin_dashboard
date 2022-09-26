@@ -8,13 +8,13 @@ import Navbar from "./componets/Navbar";
 export default function App() {
   return (
     <Div>
-      <Navbar />
+      {/* <Navbar /> */}
       <Sidebar />
       {/* <Dashboard /> */}
       {/* <Profile /> */}
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/Profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Div>
   );
@@ -23,4 +23,9 @@ export default function App() {
 // styled componets
 const Div = styled.div`
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+
+
 `;

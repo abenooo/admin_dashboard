@@ -9,6 +9,7 @@ import { IoSettings } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
+import { Link } from "react-router-dom";
 import scrollreveal from "scrollreveal";
 import { BsBank } from "react-icons/bs";
 export default function Sidebar() {
@@ -69,19 +70,19 @@ export default function Sidebar() {
                 className={currentLink === 1 ? "active" : "none"}
                 onClick={() => setCurrentLink(1)}
               >
-                <a href="/Profile">
+              <Link to='/'>
                   <MdSpaceDashboard />
                   <span> Dashboard</span>
-                </a>
+                </Link>
               </li>
               <li
                 className={currentLink === 2 ? "active" : "none"}
                 onClick={() => setCurrentLink(2)}
               >
-                <a href="#">
+               <Link to='/profile'>
                   <RiDashboard2Fill />
                   <span> Manage User</span>
-                </a>
+                </Link>
                 {/* <ul>
                   <a href="#">
                     <li className={currentLink === 7 ? "active" : "none"}>
