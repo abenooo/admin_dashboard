@@ -2,8 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import Sidebar from "./componets/Sidebar";
 import Dashboard from "./componets/Dashboard";
-import Profile from "./componets/Profile";
+import AddCategory from "./componets/Category/AddCategory";
+import ListCategory from "./componets/Category/ListCategory";
+// import Profile from "./componets/Profile";
 import { Routes, Route } from "react-router-dom";
+import NotFound from './componets/404'
 import Navbar from "./componets/Navbar";
 export default function App() {
   return (
@@ -14,7 +17,9 @@ export default function App() {
       {/* <Profile /> */}
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="addCategory"  element={<AddCategory />} />
+        <Route path="listCategory" element={<ListCategory />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </Div>
   );
@@ -26,6 +31,4 @@ const Div = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 1rem;
-
-
 `;
