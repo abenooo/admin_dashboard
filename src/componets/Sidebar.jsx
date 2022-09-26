@@ -144,74 +144,74 @@ export default function Sidebar() {
       </Section>
       <ResponsiveNav state={navbarState} className={navbarState ? "show" : ""}>
         <div className="responsive__links">
-          <ul>
-            <li
-              className={currentLink === 1 ? "active" : "none"}
-              onClick={() => setCurrentLink(1)}
-            >
-              <a href="#">
-                <MdSpaceDashboard />
-                <span> Dashboard</span>
-              </a>
-            </li>
-            <li
-              className={currentLink === 2 ? "active" : "none"}
-              onClick={() => setCurrentLink(2)}
-            >
-              <a href="#">
-                <RiDashboard2Fill />
-                <span> Manage User</span>
-              </a>
-              <ul>
+        <ul>
+              <li
+                className={currentLink === 1 ? "active" : "none"}
+                onClick={() => setCurrentLink(1)}
+              >
+              <Link to='/'>
+                  <MdSpaceDashboard />
+                  <span> Dashboard</span>
+                </Link>
+              </li>
+              <li
+                className={currentLink === 2 ? "active" : "none"}
+                onClick={() => setCurrentLink(2)}
+              >
+               <Link to='/listUser'>
+                  <RiDashboard2Fill />
+                  <span> Manage User</span>
+                </Link>
+                {/* <ul>
+                  <a href="#">
+                    <li className={currentLink === 7 ? "active" : "none"}>
+                      Add User
+                    </li>
+                  </a>
+                  <a href="#">
+                    <li className={currentLink === 8 ? "active" : "none"}>
+                      <span>List User</span>
+                    </li>
+                  </a>
+                </ul> */}
+              </li>
+              <li
+                className={currentLink === 3 ? "active" : "none"}
+                onClick={() => setCurrentLink(3)}
+              >
+                <Link to="/listArchive">
+                  <FaAddressCard />
+                  <span> Manage Archive</span>
+                </Link>
+              </li>
+              <li
+                className={currentLink === 4 ? "active" : "none"}
+                onClick={() => setCurrentLink(4)}
+              >
+               <Link to='/listCategory'>
+                  <GiTwirlCenter />
+                  <span> Manage Category</span>
+                </Link>
+              </li>
+              <li
+                className={currentLink === 5 ? "active" : "none"}
+                onClick={() => setCurrentLink(5)}
+              >
                 <a href="#">
-                  <li className={currentLink === 7 ? "active" : "none"}>
-                    Add User
-                  </li>
+                  <BsFillChatTextFill />
+                  <span> Manage Profile</span>
                 </a>
+              </li>
+              <li
+                className={currentLink === 6 ? "active" : "none"}
+                onClick={() => setCurrentLink(6)}
+              >
                 <a href="#">
-                  <li className={currentLink === 8 ? "active" : "none"}>
-                    <span>List User</span>
-                  </li>
+                  <IoSettings />
+                  <span> Settings</span>
                 </a>
-              </ul>
-            </li>
-            <li
-              className={currentLink === 3 ? "active" : "none"}
-              onClick={() => setCurrentLink(3)}
-            >
-              <a href="#">
-                <FaAddressCard />
-                <span> Manage Archive</span>
-              </a>
-            </li>
-            <li
-              className={currentLink === 4 ? "active" : "none"}
-              onClick={() => setCurrentLink(4)}
-            >
-              <a href="#">
-                <GiTwirlCenter />
-                <span> Manage Category</span>
-              </a>
-            </li>
-            <li
-              className={currentLink === 5 ? "active" : "none"}
-              onClick={() => setCurrentLink(5)}
-            >
-              <a href="#">
-                <BsFillChatTextFill />
-                <span> Manage Profile</span>
-              </a>
-            </li>
-            <li
-              className={currentLink === 6 ? "active" : "none"}
-              onClick={() => setCurrentLink(6)}
-            >
-              <a href="#">
-                <IoSettings />
-                <span> Settings</span>
-              </a>
-            </li>
-          </ul>
+              </li>
+            </ul>
         </div>
       </ResponsiveNav>
     </>
