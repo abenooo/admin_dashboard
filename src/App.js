@@ -14,7 +14,7 @@ export default function App() {
       {/* <Profile /> */}
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="profile" element={<Profile />} />
       </Routes>
     </Div>
   );
