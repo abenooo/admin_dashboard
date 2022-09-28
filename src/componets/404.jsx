@@ -1,39 +1,26 @@
 import React from "react";
-import styled from "styled-components";
 import { Link } from "react-router-link";
 // import Card from "./Card";
+import { GiTwirlCenter } from "react-icons/gi";
 export default function NotFound() {
   return (
-    <Section>
+    <section>
       {/* card one */}
-      <div className="analytic ">
-        <div className="content">
-          <h5> Page is not found</h5>
-          <Link to='/' >
-           Go to dashboard
+      <div className="h-screen w-full flex flex-col justify-center items-center bg-[#1A2238] ">
+        <h1 className="text-9xl font-extrabold text-white">404</h1>
+        <div className="bg-[#FF6A3D] px-2 text-sm rounded ">Page Not Found</div>
+        <div className="flex flex-row">
+          <Link
+            to="/"
+            className="text-white text-3xl underline underline-offset-4 "
+          >
+          
+            {/* <GiTwirlCenter /> */}
+            <span >Go to Home</span>
           </Link>
-        </div>
-        <div className="logo">
-      
+          
         </div>
       </div>
-      
-    </Section>
+    </section>
   );
 }
-const Section = styled.section`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
-  margin: auto;
-  .analytic {
-    padding: 1rem;
-    display: flex;
-    color: wheat;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 1rem;
-    transition: 0.5s ease-in-out;
-
-  }
-`;
