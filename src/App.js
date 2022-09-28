@@ -26,6 +26,7 @@ export default function App() {
         <Route path="listUser" element={<ListUser />} />
         <Route path="addArchive" element={<AddArchive />} />
         <Route path="listArchive" element={<ListArchive />} />
+        {/* not found page */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Div>
