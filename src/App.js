@@ -6,26 +6,65 @@ import AddCategory from "./componets/Category/AddCategory";
 import ListCategory from "./componets/Category/ListCategory";
 import AddUser from "./componets/User/AddUser";
 import ListUser from "./componets/User/ListUser";
-import AddArchive from "./componets/Archive/AddArchive"
+import AddArchive from "./componets/Archive/AddArchive";
 import ListArchive from "./componets/Archive/ListArchive";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "./componets/404";
-import Navbar from "./componets/Navbar";
+import Notification from "./componets/Notification";
 export default function App() {
   return (
     <Div>
-      {/* <Navbar /> */}
-      <Sidebar />
-      {/* <Dashboard /> */}
-      {/* <Profile /> */}
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Sidebar />
+              <Notification />
+              <Dashboard />
+            </>
+          }
+        />
         <Route path="addCategory" element={<AddCategory />} />
-        <Route path="listCategory" element={<ListCategory />} />
+        <Route
+          path="listCategory"
+          element={
+            <>
+              <Sidebar />
+              <Notification />
+              <ListCategory />
+            </>
+          }
+        />
         <Route path="addUser" element={<AddUser />} />
-        <Route path="listUser" element={<ListUser />} />
-        <Route path="addArchive" element={<AddArchive />} />
-        <Route path="listArchive" element={<ListArchive />} />
+        <Route
+          path="listUser"
+          element={
+            <>
+              <Sidebar />
+              <Notification />
+              <ListUser />
+            </>
+          }
+        ></Route>
+        <Route
+          path="addArchive"
+          element={
+            <>
+              <AddArchive />
+            </>
+          }
+        />
+        <Route
+          path="listArchive"
+          element={
+            <>
+              <Sidebar />
+              <Notification />
+              <ListArchive />
+            </>
+          }
+        />
         {/* not found page */}
         <Route path="*" element={<NotFound />} />
       </Routes>

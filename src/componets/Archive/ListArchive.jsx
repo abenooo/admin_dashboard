@@ -196,12 +196,12 @@ export default function ListArchive() {
                     <GiCancel className="h-6 w-6" />
                   </button>
                 </div>
-                <div class="py-6 px-6 lg:px-8">
-                  <form class="space-y-6" action="#">
+                <div className="py-6 px-6 lg:px-8">
+                  <form className="space-y-6" action="#">
                     <div>
                       <label
                         htmlFor="text"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                       >
                         Archive title
                       </label>
@@ -209,7 +209,7 @@ export default function ListArchive() {
                         type="text"
                         name="title"
                         id="title"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="enter archive title"
                         required
                       />
@@ -217,7 +217,7 @@ export default function ListArchive() {
                     <div>
                       <label
                         htmlFor="text"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                       >
                         Archive File
                       </label>
@@ -225,7 +225,7 @@ export default function ListArchive() {
                         type="file"
                         name="title"
                         id="title"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="enter archive title"
                         required
                       />
@@ -233,7 +233,7 @@ export default function ListArchive() {
                     <div>
                       <label
                         htmlFor="text"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                       >
                         Archive Description
                       </label>
