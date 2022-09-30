@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { buttonStyles } from "../../componets/ReusableStyles";
 import { AiOutlinePlus } from "react-icons/ai";
 import { GiCancel } from "react-icons/gi";
-import Navbar from "../Navbar";
+// import Navbar from "../Navbar";
 export default function ListCategory() {
   // const categoryModal = () => {
     const [categoryModal, setCategoryModal] = useState(false);
