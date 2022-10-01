@@ -18,31 +18,31 @@ export default function Sidebar() {
   const html = document.querySelector("html");
   html.addEventListener("click", () => setNavbarState(false));
 
-  // useEffect(() => {
-  //   const sr = scrollreveal({
-  //     origin: "left",
-  //     distance: "80px",
-  //     duration: 1000,
-  //     reset: false,
-  //   });
+  useEffect(() => {
+    const sr = scrollreveal({
+      origin: "left",
+      distance: "80px",
+      duration: 1000,
+      reset: false,
+    });
 
-  //   sr.reveal(
-  //     `
-  //         .brand,
-  //         .links>ul>li:nth-of-type(1),
-  //     .links>ul>li:nth-of-type(2),
-  //     .links>ul>li:nth-of-type(3),
-  //     .links>ul>li:nth-of-type(4),
-  //     .links>ul>li:nth-of-type(5),
-  //     .links>ul>li:nth-of-type(6),
-  //     .logout
-  //     `,
-  //     {
-  //       opacity: 0,
-  //       interval: 300,
-  //     }
-  //   );
-  // }, []);
+    sr.reveal(
+      `
+          .brand,
+          .links>ul>li:nth-of-type(1),
+      .links>ul>li:nth-of-type(2),
+      .links>ul>li:nth-of-type(3),
+      .links>ul>li:nth-of-type(4),
+      .links>ul>li:nth-of-type(5),
+      .links>ul>li:nth-of-type(6),
+      .logout
+      `,
+      {
+        opacity: 0,
+        interval: 300,
+      }
+    );
+  }, []);
 
   return (
     <>
