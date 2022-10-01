@@ -127,19 +127,19 @@ export default function Sidebar() {
                 className={currentLink === 6 ? "active" : "none"}
                 onClick={() => setCurrentLink(6)}
               >
-                <a href="#">
+                <Link href="#">
                   <IoSettings />
                   <span> Settings</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
         <div className="logout">
-          <a href="#">
+          <Link href="#">
             <FiLogOut />
-            <span className="logout">Logout</span>
-          </a>
+            <Link to="/login" className="logout">Logout</Link>
+          </Link>
         </div>
       </Section>
       <ResponsiveNav state={navbarState} className={navbarState ? "show" : ""}>
