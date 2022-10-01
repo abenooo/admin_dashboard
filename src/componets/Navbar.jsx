@@ -20,7 +20,7 @@ export default function Navbar() {
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
-  color: white;
+  color: black;
   .title {
     h1 {
       span {

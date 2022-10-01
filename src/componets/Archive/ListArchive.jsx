@@ -299,6 +299,7 @@ const Section = styled.section`
     margin-top: 2rem;
     .row__one {
       display: grid;
+      margin-top: -30px;
       grid-template-columns: repeat(7, 1fr);
       /* height: 50%; */
       gap: 1rem;
