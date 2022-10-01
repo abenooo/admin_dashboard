@@ -8,6 +8,7 @@ import AddUser from "./componets/User/AddUser";
 import ListUser from "./componets/User/ListUser";
 import AddArchive from "./componets/Archive/AddArchive";
 import ListArchive from "./componets/Archive/ListArchive";
+import Login from "./componets/Auth//Login";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "./componets/404";
 import Notification from "./componets/Notification";
@@ -66,6 +67,7 @@ export default function App() {
           }
         />
         {/* not found page */}
+        <Route path="login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Div>
