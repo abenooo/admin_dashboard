@@ -31,7 +31,7 @@ export default function ReviewDetails() {
               </div>
               <div className="content">
                 <button >
-                  Back
+                 <Link to="/ListUser">Back</Link> 
                 </button>
               </div>
             </div>
