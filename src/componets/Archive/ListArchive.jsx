@@ -5,16 +5,42 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { GiCancel } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import useFetch from "../../componets/hooks/useFetch";
+import Axios from "axios";
+import axios from "axios";
 export default function ListArchive() {
-  const url = "http://localhost:1337"
+  const url = "http://localhost:1337";
   const [archiveModal, setArchiveModal] = useState(false);
-  const { loading, data, error } = useFetch(
-    "http://localhost:1337/archives"
-  );
+  const { loading, data, error } = useFetch("http://localhost:1337/archives");
+
+  // from the form
+  const [title, setTitle] = useState("");
+  const [file, setFile] = useState("");
+  const [description, setdescription] = useState("");
+
+  // on the form submission
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const post = {
+      title,
+      file,
+      description
+    }
+    try {
+      const res = await axios.post('http://localhost:1337/archives',post)
+      if(res.status === 200 ){
+        alert(res.data)
+      }
+      else{
+        alert(error)
+      }
+    } catch (error) {
+      alert(error)
+    }
+  };
   // const {loading,data,error} = useQuery(ARCHIVES)
   if (loading) return <p className="">loading</p>;
   if (error) return <p>error</p>;
-  // console.log(data.parse());
+
   return (
     <>
       <Section>
@@ -57,9 +83,7 @@ export default function ListArchive() {
                       {data.map((review) => (
                         <tbody key={review.id}>
                           <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                            <th className="py-3 px-6 text-left">
-                              {review.id}
-                            </th>
+                            <th className="py-3 px-6 text-left">{review.id}</th>
                             <th className="py-3 px-6 text-left">
                               {review.title}
                             </th>
@@ -67,11 +91,11 @@ export default function ListArchive() {
                               {review.categories.id}
                             </th>
                             <th className="py-3 px-6 text-center">
-                            {/* <img src={`${url}${review.file.data.url}`}></img> */}
-                            {review.file.name}
+                              {/* <img src={`${url}${review.file.data.url}`}></img> */}
+                              {review.file.name}
                             </th>
                             <th className="py-3 px-6 text-center">
-                            {review.file.id}
+                              {review.file.id}
                             </th>
                             <th className="py-3 px-6 text-center">
                               {review.title}
@@ -171,7 +195,7 @@ export default function ListArchive() {
                   </button>
                 </div>
                 <div className="py-6 px-6 lg:px-8">
-                  <form className="space-y-6" action="#">
+                  <form className="space-y-6" onSubmit={onSubmit}>
                     <div>
                       <label
                         htmlFor="text"
@@ -183,6 +207,8 @@ export default function ListArchive() {
                         type="text"
                         name="title"
                         id="title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="enter archive title"
                         required
@@ -197,10 +223,12 @@ export default function ListArchive() {
                       </label>
                       <input
                         type="file"
-                        name="title"
-                        id="title"
+                        name="file"
+                        id="file"
+                        value={file}
+                        onChange={(e) => setFile(e.target.value)}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        placeholder="enter archive title"
+                        placeholder="enter archive file"
                         required
                       />
                     </div>
@@ -213,12 +241,21 @@ export default function ListArchive() {
                       </label>
                       <textarea
                         id="description"
+                        value={description}
+                        onChange={(e) => setdescription(e.target.value)}
                         rows="4"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                       ></textarea>
                       {/* <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="enter archive title" required/> */}
                     </div>
-                    <div className="flex justify-between"></div>
+                    <div className="flex justify-between">
+                    <button
+                      type="submit"
+                      className=" mx-6 w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Add New Archive
+                    </button>
+                    </div>
                   </form>
                 </div>
                 <div className="flex items-center justify-center mx-6 p-6 border-t border-solid border-blueGray-200 rounded-b">
