@@ -5,12 +5,34 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { GiCancel } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import useFetch from "../../componets/hooks/useFetch";
+import axios from "axios";
 export default function ListArchive() {
-  const url = "http://localhost:1337"
+  const url = "http://localhost:1337";
   const [categoryModal, setCategoryModal] = useState(false);
-  const { loading, data, error } = useFetch(
-    "http://localhost:1337/categories"
-  );
+  const { loading, data, error } = useFetch("http://localhost:1337/categories");
+
+  const [title, setTitle] = useState("");
+  const [description, setDescrption] = useState("");
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const category = {
+      title,
+      description
+    }
+    try {
+      const res = await axios.post('http://localhost:1337/categories',category)
+      if(res.status === 'ok')
+      {
+       console.log(res)
+      }
+      else{
+        alert(error)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  };
   // const {loading,data,error} = useQuery(ARCHIVES)
   if (loading) return <p className="">loading</p>;
   if (error) return <p>error</p>;
@@ -27,7 +49,7 @@ export default function ListArchive() {
               </div>
               <div className="content">
                 <button onClick={() => setCategoryModal(true)}>
-                Add Category
+                  Add Category
                 </button>
               </div>
             </div>
@@ -43,25 +65,19 @@ export default function ListArchive() {
                         <tr className="bg-gray-600 text-gray-100 uppercase text-sm leading-normal">
                           <th className="py-3 px-6 text-left">ID</th>
                           <th className="py-3 px-6 text-left">Title</th>
-                          <th className="py-3 px-6 text-center">
-                          Description
-                          </th>
-                          <th className="py-3 px-6 text-center">
-                            Operation
-                          </th>
+                          <th className="py-3 px-6 text-center">Description</th>
+                          <th className="py-3 px-6 text-center">Operation</th>
                         </tr>
                       </thead>
                       {data.map((review) => (
                         <tbody key={review.id}>
                           <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                            <th className="py-3 px-6 text-left">
-                              {review.id}
-                            </th>
+                            <th className="py-3 px-6 text-left">{review.id}</th>
                             <th className="py-3 px-6 text-left">
                               {review.title}
                             </th>
                             <th className="py-3 px-6 text-center">
-                            {review.description}
+                              {review.description}
                             </th>
                             <th className="py-3 px-6 text-center">
                               <div className="flex item-center justify-center">
@@ -142,92 +158,101 @@ export default function ListArchive() {
       </Section>
       {categoryModal ? (
         <Section>
-        <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-          <div className="relative w-9/12 my-6 mx-auto max-w-3xl">
-            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-              <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
-                <h3 className="text-3xl font=semibold">Add New Category</h3>
-                <button
-                  className="bg-transparent border-0 text-black float-right"
-                  onClick={() => setCategoryModal(false)}
-                >
-                  {/* <span className="text-black opacity-7 h-6 w-6 text-xl block bg-gray-400 py-0 rounded-full">
+          <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+            <div className="relative w-9/12 my-6 mx-auto max-w-3xl">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
+                  <h3 className="text-3xl font=semibold">Add New Category</h3>
+                  <button
+                    className="bg-transparent border-0 text-black float-right"
+                    onClick={() => setCategoryModal(false)}
+                  >
+                    {/* <span className="text-black opacity-7 h-6 w-6 text-xl block bg-gray-400 py-0 rounded-full">
                 x
               </span> */}
-                  <GiCancel className="h-6 w-6" />
-                </button>
-              </div>
-              <div className="py-6 px-6 lg:px-8">
-                <form className="space-y-6" action="#">
-                  <div>
-                    <label
-                      htmlFor="text"
-                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                    >
-                      Category title
-                    </label>
-                    <input
-                      type="text"
-                      name="title"
-                      id="title"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                      placeholder="enter category title"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="text"
-                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                    >
-                      Category Description
-                    </label>
-                    <textarea
-                      id="description"
-                      rows="4"
-                      placeholder="enter category description (optional)"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    ></textarea>
-                    {/* <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="enter archive title" required/> */}
-                  </div>
-                  <div className="flex justify-between"></div>
-                </form>
-              </div>
-              <div className="flex items-center justify-center mx-6 p-6 border-t border-solid border-blueGray-200 rounded-b">
-                <div className="flex flex-row flex-wrap justify-around">
-                  <button
-                    onClick={() => setCategoryModal(false)}
-                    type="submit"
-                    className=" mx-6 w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className=" mx-6 w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    Add New Category
+                    <GiCancel className="h-6 w-6" />
                   </button>
                 </div>
-                {/* <button
+                <div className="py-6 px-6 lg:px-8">
+                  <form className="space-y-6" onSubmit={onSubmit}>
+                    <div>
+                      <label
+                        htmlFor="text"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Category title
+                      </label>
+                      <input
+                        type="text"
+                        name="title"
+                        id="title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        placeholder="enter category title"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="text"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Category Description
+                      </label>
+                      <textarea
+                        id="description"
+                        value={description}
+                        onChange={(e) => setDescrption(e.target.value)}
+                        rows="4"
+                        placeholder="enter category description (optional)"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      ></textarea>
+                      {/* <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="enter archive title" required/> */}
+                    </div>
+                    <div className="flex justify-between">  <button
+                      type="submit"
+                      className=" mx-6 w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Add New Category
+                    </button></div>
+                  </form>
+                </div>
+                <div className="flex items-center justify-center mx-6 p-6 border-t border-solid border-blueGray-200 rounded-b">
+                  <div className="flex flex-row flex-wrap justify-around">
+                    <button
+                      onClick={() => setCategoryModal(false)}
+                      type="submit"
+                      className=" mx-6 w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className=" mx-6 w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Add New Category
+                    </button>
+                  </div>
+                  {/* <button
               className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
               type="button"
               onClick={() => setCategoryModal(false)}
             >
               Close
             </button> */}
-                {/* <button
+                  {/* <button
               className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
               type="button"
               onClick={() => setCategoryModal(false)}
             >
               Submit
             </button> */}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </Section>
+        </Section>
       ) : null}
     </>
   );
