@@ -59,7 +59,7 @@ export default function ReviewDetails() {
                         </tr>
                       </thead>
                         <tbody >
-                          <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                          <tr className="bg-gray-200 text-gray-600  text-sm leading-normal">
                             <th className="py-3 px-6 text-left">
                               {/* {review.id} */}
                               {data.id}
