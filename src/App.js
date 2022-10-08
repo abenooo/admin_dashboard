@@ -12,64 +12,110 @@ import Login from "./componets/Auth//Login";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "./componets/404";
 import Notification from "./componets/Notification";
+import ReviewDetails from "./componets/ReviewDetails";
+import UserDetails from "./componets/User/UserDetails";
+import CategoryDetails from "./componets/Category/CategoryDetails";
+import ArchiveDetails from "./componets/Archive/ArchiveDetails";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+// apollo client
+
 export default function App() {
+  const client = new ApolloClient({
+    uri: "http://localhost:1337/graphql",
+    cache: new InMemoryCache(),
+  });
+
   return (
     <Div>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Sidebar />
-              <Notification />
-              <Dashboard />
-            </>
-          }
-        />
-        <Route path="addCategory" element={<AddCategory />} />
-        <Route
-          path="listCategory"
-          element={
-            <>
-              <Sidebar />
-              <Notification />
-              <ListCategory />
-            </>
-          }
-        />
-        <Route path="addUser" element={<AddUser />} />
-        <Route
-          path="listUser"
-          element={
-            <>
-              <Sidebar />
-              <Notification />
-              <ListUser />
-            </>
-          }
-        ></Route>
-        <Route
-          path="addArchive"
-          element={
-            <>
-              <AddArchive />
-            </>
-          }
-        />
-        <Route
-          path="listArchive"
-          element={
-            <>
-              <Sidebar />
-              <Notification />
-              <ListArchive />
-            </>
-          }
-        />
-        {/* not found page */}
-        <Route path="login" element={<Login />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <ApolloProvider client={client}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Sidebar />
+                <Notification />
+                <Dashboard />
+              </>
+            }
+          />
+          <Route path="addCategory" element={<AddCategory />} />
+          <Route
+            path="listCategory"
+            element={
+              <>
+                <Sidebar />
+                <Notification />
+                <ListCategory />
+              </>
+            }
+          />
+          <Route path="addUser" element={<AddUser />} />
+          <Route
+            path="listUser"
+            element={
+              <>
+                <Sidebar />
+                <Notification />
+                <ListUser />
+              </>
+            }
+          ></Route>
+          <Route
+            path="addArchive"
+            element={
+              <>
+                <AddArchive />
+              </>
+            }
+          />
+          <Route
+            path="listArchive"
+            element={
+              <>
+                <Sidebar />
+                <Notification />
+                <ListArchive />
+              </>
+            }
+          />
+          {/* not found page */}
+
+          <Route path="login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
+
+          <Route path="/details/:id" element={<ReviewDetails />}></Route>
+          <Route
+            path="/userDetails/:id"
+            element={
+              <>
+                <Sidebar />
+                <UserDetails />
+              </>
+            }
+          />
+          <Route
+            path="/categoryDetails/:id"
+            element={
+              <>
+                <Sidebar />
+                <CategoryDetails />
+              </>
+            }
+          />
+             <Route
+            path="/archiveDetails/:id"
+            element={
+              <>
+                <Sidebar />
+                <ArchiveDetails />
+              </>
+            }
+          />
+          
+          
+        </Routes>{" "}
+      </ApolloProvider>
     </Div>
   );
 }
