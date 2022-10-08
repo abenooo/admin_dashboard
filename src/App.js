@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Sidebar from "./componets/Sidebar";
 import Dashboard from "./componets/Dashboard";
 // import AddCategory from "./componets/Category/AddCategory";
-// import ListCategory from "./componets/Category/ListCategory";
+import ListCategory from "./componets/Category/ListCategory";
 import AddUser from "./componets/User/AddUser";
 import ListUser from "./componets/User/ListUser";
 import AddArchive from "./componets/Archive/AddArchive";
@@ -13,7 +13,7 @@ import { Routes, Route } from "react-router-dom";
 import NotFound from "./componets/404";
 import Notification from "./componets/Notification";
 import UserDetails from "./componets/User/UserDetails";
-// import CategoryDetails from "./componets/Category/CategoryDetails";
+import CategoryDetails from "./componets/Category/CategoryDetails";
 import ArchiveDetails from "./componets/Archive/ArchiveDetails";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 // apollo client
@@ -38,7 +38,7 @@ export default function App() {
               </>
             }
           />
-          {/* <Route path="addCategory" element={<AddCategory />} />
+          {/* <Route path="addCategory" element={<AddCategory />} /> */}
           <Route
             path="listCategory"
             element={
@@ -48,7 +48,7 @@ export default function App() {
                 <ListCategory />
               </>
             }
-          /> */}
+          />
           <Route path="addUser" element={<AddUser />} />
           <Route
             path="listUser"
@@ -93,7 +93,7 @@ export default function App() {
               </>
             }
           />
-          {/* <Route
+          <Route
             path="/categoryDetails/:id"
             element={
               <>
@@ -101,7 +101,7 @@ export default function App() {
                 <CategoryDetails />
               </>
             }
-          /> */}
+          />
              <Route
             path="/archiveDetails/:id"
             element={
