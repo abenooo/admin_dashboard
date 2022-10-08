@@ -7,6 +7,7 @@ import { IoStatsChart } from "react-icons/io5";
 import { BiGroup } from "react-icons/bi";
 import { FiActivity } from "react-icons/fi";
 import { HiArrowNarrowRight } from "react-icons/hi";
+import { Link } from "react-router-dom";
 export default function Card() {
   return (
     <Section>
@@ -29,9 +30,9 @@ export default function Card() {
         <div className="content">
           <h5>Category</h5>
           <h2>350</h2>
-          <a className="view-all" href="#">
+          <Link className="view-all" href="#">
             View all <HiArrowNarrowRight />
-          </a>
+          </Link>
         </div>
         <div className="logo">
           <IoStatsChart />
@@ -43,9 +44,9 @@ export default function Card() {
         <div className="content">
           <h5>Number of Users</h5>
           <h2>321</h2>
-          <a className="view-all" href="#">
+          <Link className="view-all" href="#">
             View all <HiArrowNarrowRight />
-          </a>
+          </Link>
         </div>
         <div className="logo">
           <BiGroup />
@@ -56,9 +57,9 @@ export default function Card() {
         <div className="content">
           <h5>Activity</h5>
           <h2>000</h2>
-          <a className="view-all" href="#">
+          <Link className="view-all" href="#">
             View all <HiArrowNarrowRight />
-          </a>
+          </Link>
         </div>
         <div className="logo">
           <FiActivity />

@@ -107,7 +107,7 @@ function Login() {
                 >Remember me</label
               >
             </div>
-            <a href="#!" className="text-gray-800">Forgot password?</a>
+            <Link to="/logout" className="text-gray-800">Forgot password?</Link>
           </div>
 
           <div className="text-center lg:text-left">

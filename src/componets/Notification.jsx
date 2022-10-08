@@ -30,9 +30,9 @@ export default function Notification() {
               <div>
                 <MdOutlineLogout className="h-6 w-6" />
               </div>
-              <div>
+              {/* <div>
                 <image href="" className="h-6 w-6 b" />
-              </div>
+              </div> */}
               <div className="content"></div>
             </div>
           </div>
