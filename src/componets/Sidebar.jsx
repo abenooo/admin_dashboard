@@ -118,16 +118,16 @@ export default function Sidebar() {
                 className={currentLink === 5 ? "active" : "none"}
                 onClick={() => setCurrentLink(5)}
               >
-                <a href="#">
+                <Link href="/listCategory">
                   <BsFillChatTextFill />
                   <span> Manage Profile</span>
-                </a>
+                </Link>
               </li>
               <li
                 className={currentLink === 6 ? "active" : "none"}
                 onClick={() => setCurrentLink(6)}
               >
-                <Link href="#">
+                <Link href="/listCategory">
                   <IoSettings />
                   <span> Settings</span>
                 </Link>
@@ -136,7 +136,7 @@ export default function Sidebar() {
           </div>
         </div>
         <div className="logout">
-          <Link href="#">
+          <Link href="/login">
             <FiLogOut />
             <Link to="/login" className="logout">Logout</Link>
           </Link>
@@ -197,19 +197,19 @@ export default function Sidebar() {
                 className={currentLink === 5 ? "active" : "none"}
                 onClick={() => setCurrentLink(5)}
               >
-                <a href="#">
+                <Link href="/listCategory">
                   <BsFillChatTextFill />
                   <span> Manage Profile</span>
-                </a>
+                </Link>
               </li>
               <li
                 className={currentLink === 6 ? "active" : "none"}
                 onClick={() => setCurrentLink(6)}
               >
-                <a href="#">
+                <Link href="/listCategory">
                   <IoSettings />
                   <span> Settings</span>
-                </a>
+                </Link>
               </li>
             </ul>
         </div>
