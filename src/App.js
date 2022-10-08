@@ -12,7 +12,6 @@ import Login from "./componets/Auth//Login";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "./componets/404";
 import Notification from "./componets/Notification";
-import ReviewDetails from "./componets/ReviewDetails";
 import UserDetails from "./componets/User/UserDetails";
 // import CategoryDetails from "./componets/Category/CategoryDetails";
 import ArchiveDetails from "./componets/Archive/ArchiveDetails";
@@ -84,7 +83,7 @@ export default function App() {
           <Route path="login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
 
-          <Route path="/details/:id" element={<ReviewDetails />}></Route>
+
           <Route
             path="/userDetails/:id"
             element={
