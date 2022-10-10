@@ -23,18 +23,17 @@ export default function ListArchive() {
     const post = {
       title,
       file,
-      description
-    }
+      description,
+    };
     try {
-      const res = await axios.post('http://localhost:1337/archives',post)
-      if(res.status === 200 ){
-        alert(res.data)
-      }
-      else{
-        alert(error)
+      const res = await axios.post("http://localhost:1337/archives", post);
+      if (res.status === 200) {
+        alert(res.data);
+      } else {
+        alert(error);
       }
     } catch (error) {
-      alert(error)
+      alert(error);
     }
   };
   // const {loading,data,error} = useQuery(ARCHIVES)
@@ -68,42 +67,77 @@ export default function ListArchive() {
                       <thead>
                         <tr className="bg-gray-600 text-gray-100 uppercase text-sm leading-normal">
                           <th className="py-3 px-6 text-left">Number</th>
-                          <th className="py-3 px-6 text-left">Name</th>
-                          <th className="py-3 px-6 text-left">Username</th>
-                          <th className="py-3 px-6 text-center">email</th>
+                          <th className="py-3 px-6 text-left">Title</th>
+                          <th className="py-3 px-6 text-left">Description</th>
                           <th className="py-3 px-6 text-center">
-                            address street{" "}
+                            Created date
                           </th>
+                          <th className="py-3 px-6 text-center">File name</th>
                           <th className="py-3 px-6 text-center">
-                            address city{" "}
+                            Category name
                           </th>
                           <th className="py-3 px-6 text-center">Action</th>
                         </tr>
                       </thead>
-                      {data.map((review) => (
-                        <tbody key={review.id}>
-                          <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                            <th className="py-3 px-6 text-left">{review.id}</th>
-                            <th className="py-3 px-6 text-left">
-                              {review.title}
-                            </th>
-                            <th className="py-3 px-6 text-left">
-                              {review.categories.id}
-                            </th>
-                            <th className="py-3 px-6 text-center">
-                              {/* <img src={`${url}${review.file.data.url}`}></img> */}
-                              {review.file.name}
-                            </th>
-                            <th className="py-3 px-6 text-center">
-                              {review.file.id}
-                            </th>
-                            <th className="py-3 px-6 text-center">
-                              {review.title}
-                            </th>
-                            <th className="py-3 px-6 text-center">
-                              <div className="flex item-center justify-center">
-                                <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                  <Link to={`/archiveDetails/${review.id}`}>
+                      {data.map(function (review, index) {
+                        let baseUrl = "localhost:1337/";
+                        let i = parseInt(index);
+                        console.log(i);
+
+                        return (
+                          <tbody key={review.id}>
+                            <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                              <th className="py-3 px-6 text-left"> {index}</th>
+                              <th className="py-3 px-6 text-left">
+                                {review.title}
+                              </th>
+                              <th className="py-3 px-6 text-center">
+                                {/* <img src={`${url}${review.file.data.url}`}></img> */}
+                                {review.description}
+                              </th>
+                              <th className="py-3 px-6 text-center">
+                                {review.created_at}
+                              </th>
+                              <th className="py-3 px-6 text-center">
+                                {/* {review.file[0].url} */}
+                                <img
+                                  src={`http://localhost:1337${review.file[0].url}`}
+                                  style={{
+                                    height: "50px",
+                                    width: "50px",
+                                    borderRadius: "25px",
+                                  }}
+                                />
+                              </th>
+                              <th className="py-3 px-6 text-center">
+                                {/* {review.categories[0].title} */}
+                              </th>
+                              <th className="py-3 px-6 text-center">
+                                <div className="flex item-center justify-center">
+                                  <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                    <Link to={`/archiveDetails/${review.id}`}>
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                      >
+                                        <path
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                          strokeWidth="2"
+                                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                        />
+                                        <path
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                          strokeWidth="2"
+                                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                                        />
+                                      </svg>
+                                    </Link>
+                                  </div>
+                                  <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       fill="none"
@@ -114,52 +148,31 @@ export default function ListArchive() {
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
                                         strokeWidth="2"
-                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
                                       />
+                                    </svg>
+                                  </div>
+                                  <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke="currentColor"
+                                    >
                                       <path
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
                                         strokeWidth="2"
-                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                                       />
                                     </svg>
-                                  </Link>
+                                  </div>
                                 </div>
-                                <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth="2"
-                                      d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                                    />
-                                  </svg>
-                                </div>
-                                <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth="2"
-                                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                                    />
-                                  </svg>
-                                </div>
-                              </div>
-                            </th>
-                          </tr>
-                        </tbody>
-                      ))}
+                              </th>
+                            </tr>
+                          </tbody>
+                        );
+                      })}
                       <tbody className="text-gray-600 text-sm font-light">
                         <tr className="border-b border-gray-200 hover:bg-gray-100">
                           <td className="py-3 px-6 text-left whitespace-nowrap">
@@ -248,48 +261,40 @@ export default function ListArchive() {
                       ></textarea>
                       {/* <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="enter archive title" required/> */}
                     </div>
-                    <div className="flex justify-between">
-                    <button
-                      type="submit"
-                      className=" mx-6 w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                      Add New Archive
-                    </button>
+                    <div className="flex items-center justify-center mx-6 p-6 border-t border-solid border-blueGray-200 rounded-b">
+                      <div className="flex flex-row flex-wrap justify-around">
+                        <button
+                          type="submit"
+                          className=" mx-6 w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        >
+                          Add New Archive
+                        </button>
+                        <button
+                          onClick={() => setArchiveModal(false)}
+                          type="submit"
+                          className=" mx-6 w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        >
+                          Cancel
+                        </button>
+                      </div>
                     </div>
                   </form>
                 </div>
-                <div className="flex items-center justify-center mx-6 p-6 border-t border-solid border-blueGray-200 rounded-b">
-                  <div className="flex flex-row flex-wrap justify-around">
-                    <button
-                      onClick={() => setArchiveModal(false)}
-                      type="submit"
-                      className=" mx-6 w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      className=" mx-6 w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                      Add New Archive
-                    </button>
-                  </div>
-                  {/* <button
+              </div>
+              {/* <button
                 className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
                 type="button"
                 onClick={() => setArchiveModal(false)}
               >
                 Close
               </button> */}
-                  {/* <button
+              {/* <button
                 className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                 type="button"
                 onClick={() => setArchiveModal(false)}
               >
                 Submit
               </button> */}
-                </div>
-              </div>
             </div>
           </div>
         </Section>
