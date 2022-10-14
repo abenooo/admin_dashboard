@@ -5,6 +5,8 @@ import { AiFillCaretDown } from "react-icons/ai";
 import { IconContext } from "react-icons";
 import { MdNotificationsNone, MdOutlineLogout } from "react-icons/md";
 export default function Notification() {
+  let json = localStorage.getItem("identifier");
+  let username = JSON.parse(json);
   return (
     <>
       <Section>
@@ -12,7 +14,7 @@ export default function Notification() {
           {/* button */}
           <div className="row__one">
             <div className="notification">
-             
+            <h3>{username}</h3>
               <div>
                 <MdNotificationsNone className="h-6 w-6 co" />
               </div>
@@ -21,9 +23,11 @@ export default function Notification() {
                   <AiFillCaretDown />
                 </div>
               </IconContext.Provider> */}
+             
               <div>
                 <AiFillCaretDown className="h-6 w-6" />
               </div>
+              
               <div>
                 <CgProfile className="h-6 w-6" />
               </div>

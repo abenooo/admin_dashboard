@@ -32,8 +32,9 @@ export default function App() {
             path="/"
             element={
               <>
-                <Sidebar />
+               
                 <Notification />
+                <Sidebar />
                 <Dashboard />
               </>
             }
@@ -79,8 +80,7 @@ export default function App() {
             }
           />
           {/* not found page */}
-
-          <Route path="login" element={<Login />} />
+          <Route path="login" element={<Login />}/>
           <Route path="*" element={<NotFound />} />
 
 
