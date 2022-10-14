@@ -9,13 +9,19 @@ import { IoSettings } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
-import { Link } from "react-router-dom";
+import { json, Link } from "react-router-dom";
+import LoginAWT from "./Auth/LoginAWT";
 import scrollreveal from "scrollreveal";
 import { BsBank } from "react-icons/bs";
 export default function Sidebar() {
   const [currentLink, setCurrentLink] = useState(1);
   const [navbarState, setNavbarState] = useState(false);
   const html = document.querySelector("html");
+
+  // get and display username from broser
+  // localStorage.getItem("username");
+  let json = localStorage.getItem("identifier");
+  let username = JSON.parse(json);
   html.addEventListener("click", () => setNavbarState(false));
 
   useEffect(() => {
@@ -50,7 +56,8 @@ export default function Sidebar() {
         <div className="top">
           <div className="brand">
             <BsBank />
-            <span>Admin</span>
+            <span>{username}</span>
+           
           </div>
           <div className="toggle">
             {navbarState ? (
@@ -136,9 +143,9 @@ export default function Sidebar() {
           </div>
         </div>
         <div className="logout">
-          <Link href="/login">
+          <Link href="/logins">
             <FiLogOut />
-            <Link to="/login" className="logout">Logout</Link>
+            <Link to="/logins" className="logout">Logout</Link>
           </Link>
         </div>
       </Section>
