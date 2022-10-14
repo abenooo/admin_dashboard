@@ -9,8 +9,7 @@ import { IoSettings } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
-import { json, Link } from "react-router-dom";
-import LoginAWT from "./Auth/LoginAWT";
+import { Link } from "react-router-dom";
 import scrollreveal from "scrollreveal";
 import { BsBank } from "react-icons/bs";
 export default function Sidebar() {
