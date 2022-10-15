@@ -3,12 +3,14 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import logo from "../../assets/cbe_logo.jpg"
 export default function Login() {
   const [password, setPassword] = useState("");
-   const  [identifier, setIdentifier] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const navigate = useNavigate();
   // const  usertoken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjY1NjYxOTUxLCJleHAiOjE2NjgyNTM5NTF9.DvIbMVnCkOVObem1FhXTj9iLL42_c38WfZuGtCMLb60';
-   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjY1NzM3OTE3LCJleHAiOjE2NjgzMjk5MTd9.7Dml4SS8o_olMJ61OfMHHCpkkBOqNEqIF9Z-tIz0-sQ';
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjY1NzM3OTE3LCJleHAiOjE2NjgzMjk5MTd9.7Dml4SS8o_olMJ61OfMHHCpkkBOqNEqIF9Z-tIz0-sQ";
   const onSubmit = async (e) => {
     e.preventDefault();
     const user = {
@@ -16,31 +18,36 @@ export default function Login() {
       password,
     };
     try {
-      const res = await axios.post("http://localhost:1337/auth/local", user
-      ,
-      {
+      const res = await axios.post("http://localhost:1337/auth/local", user, {
         headers: {
-          Authorization:
-            `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
-      }
-      );
+      });
       if (res.status === "OK") {
         localStorage.setItem(res);
         navigate("/");
         console.log("bananaa");
-      }
-      else{
-        navigate("/");
+      } else {
         // json stringfy the object
-       localStorage.setItem("identifier",JSON.stringify(res.data.user.username));
-        console.log(res.data.user.username)
+        localStorage.setItem(
+          "identifier",
+          JSON.stringify(res.data.user.username)
+        );
+        console.log(res.data.user.username);
+        console.log(res.data.user.role.type);
+        if (res.data.user.role.type === "public") {
+          alert("public");
+          navigate("/listCategory");
+        } else if (res.data.user.role.type === "authenticated") {
+          alert("authenticated");
+          navigate("/");
+        } else {
+          alert("unknown user");
+        }
       }
-
     } catch (error) {
       console.log(error);
     }
-    
   };
   return (
     <div>
@@ -48,10 +55,10 @@ export default function Login() {
         <div className="px-6 h-full text-gray-800">
           <div className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
             <div className="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">
-              <image
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTXgHwEMDl38Sjd8Sg-1cP2szW1Q32x9iHFg&usqp=CAU"
+              <img
+                src={logo}
                 className="w-full"
-                alt="Sample image"
+                alt={"cbe logo"}
               />
             </div>
             <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
