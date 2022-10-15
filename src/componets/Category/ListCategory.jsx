@@ -7,13 +7,42 @@ import { Link } from "react-router-dom";
 import useFetch from "../../componets/hooks/useFetch";
 import axios from "axios";
 export default function ListArchive() {
+  // get
+  // A jwt token may be used for making permission-restricted API requests. 
+  // To make an API request as a user, place the jwt token into an Authorization header of the GET request.
+  //  A request without a token, will assume the public role permissions by default.
+  //   Modify the permissions of each user's role in admin dashboard. 
+  //   Authentication failures return a 401 (unauthorized) error
   const url = "http://localhost:1337";
+  // const token = ""
   const [categoryModal, setCategoryModal] = useState(false);
-  const { loading, data, error } = useFetch("http://localhost:1337/categories");
-
+  const { loading, data, error } = useFetch("http://localhost:1337/categories",{
+    headers: {
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjY1NjYxOTUxLCJleHAiOjE2NjgyNTM5NTF9.DvIbMVnCkOVObem1FhXTj9iLL42_c38WfZuGtCMLb60',
+    },
+  });
+console.log(data)
   const [title, setTitle] = useState("");
   const [description, setDescrption] = useState("");
+// put
+// function updateCategory(){
+// axios
+//   .put('http://localhost:1337/categories/4/?populate=categories', {
+//     data: {
+//       title,
+//       description
+//     },
+//   })
+//   .then(response => {
+//     console.log("hi"+response);
+//   })
+// }
 
+ 
+
+ 
+// post
   const onSubmit = async (e) => {
     e.preventDefault();
     const category = {
@@ -21,7 +50,13 @@ export default function ListArchive() {
       description
     }
     try {
-      const res = await axios.post('http://localhost:1337/categories',category)
+      const res = await axios.post('http://localhost:1337/categories',category,{
+        headers: {
+          Authorization:
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjY1NjYxOTUxLCJleHAiOjE2NjgyNTM5NTF9.DvIbMVnCkOVObem1FhXTj9iLL42_c38WfZuGtCMLb60',
+        },
+      });
+      console.log(data)
       if(res.status === 'ok')
       {
        console.log(res)
@@ -120,6 +155,7 @@ export default function ListArchive() {
                                   </svg>
                                 </div>
                                 <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                  <button>
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -132,7 +168,7 @@ export default function ListArchive() {
                                       strokeWidth="2"
                                       d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                                     />
-                                  </svg>
+                                  </svg></button>
                                 </div>
                               </div>
                             </th>
