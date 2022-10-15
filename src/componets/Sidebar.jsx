@@ -56,7 +56,6 @@ export default function Sidebar() {
           <div className="brand">
             <BsBank />
             <span>{username}</span>
-           
           </div>
           <div className="toggle">
             {navbarState ? (
@@ -76,7 +75,7 @@ export default function Sidebar() {
                 className={currentLink === 1 ? "active" : "none"}
                 onClick={() => setCurrentLink(1)}
               >
-              <Link to='/'>
+                <Link to="/">
                   <MdSpaceDashboard />
                   <span> Dashboard</span>
                 </Link>
@@ -85,7 +84,7 @@ export default function Sidebar() {
                 className={currentLink === 2 ? "active" : "none"}
                 onClick={() => setCurrentLink(2)}
               >
-               <Link to='/listUser'>
+                <Link to="/listUser">
                   <RiDashboard2Fill />
                   <span> Manage User</span>
                 </Link>
@@ -115,7 +114,7 @@ export default function Sidebar() {
                 className={currentLink === 4 ? "active" : "none"}
                 onClick={() => setCurrentLink(4)}
               >
-               <Link to='/listCategory'>
+                <Link to="/listCategory">
                   <GiTwirlCenter />
                   <span> Manage Category</span>
                 </Link>
@@ -142,33 +141,35 @@ export default function Sidebar() {
           </div>
         </div>
         <div className="logout">
-          <Link href="/logins">
+          <Link href="/login">
             <FiLogOut />
-            <Link to="/logins" className="logout">Logout</Link>
+            <Link to="/login" className="logout">
+              Logout
+            </Link>
           </Link>
         </div>
       </Section>
       <ResponsiveNav state={navbarState} className={navbarState ? "show" : ""}>
         <div className="responsive__links">
-        <ul>
-              <li
-                className={currentLink === 1 ? "active" : "none"}
-                onClick={() => setCurrentLink(1)}
-              >
-              <Link to='/'>
-                  <MdSpaceDashboard />
-                  <span> Dashboard</span>
-                </Link>
-              </li>
-              <li
-                className={currentLink === 2 ? "active" : "none"}
-                onClick={() => setCurrentLink(2)}
-              >
-               <Link to='/listUser'>
-                  <RiDashboard2Fill />
-                  <span> Manage User</span>
-                </Link>
-                {/* <ul>
+          <ul>
+            <li
+              className={currentLink === 1 ? "active" : "none"}
+              onClick={() => setCurrentLink(1)}
+            >
+              <Link to="/">
+                <MdSpaceDashboard />
+                <span> Dashboard</span>
+              </Link>
+            </li>
+            <li
+              className={currentLink === 2 ? "active" : "none"}
+              onClick={() => setCurrentLink(2)}
+            >
+              <Link to="/listUser">
+                <RiDashboard2Fill />
+                <span> Manage User</span>
+              </Link>
+              {/* <ul>
                   <a href="#">
                     <li className={currentLink === 7 ? "active" : "none"}>
                       Add User
@@ -180,44 +181,53 @@ export default function Sidebar() {
                     </li>
                   </a>
                 </ul> */}
-              </li>
-              <li
-                className={currentLink === 3 ? "active" : "none"}
-                onClick={() => setCurrentLink(3)}
-              >
-                <Link to="/listArchive">
-                  <FaAddressCard />
-                  <span> Manage Archive</span>
+            </li>
+            <li
+              className={currentLink === 3 ? "active" : "none"}
+              onClick={() => setCurrentLink(3)}
+            >
+              <Link to="/listArchive">
+                <FaAddressCard />
+                <span> Manage Archive</span>
+              </Link>
+            </li>
+            <li
+              className={currentLink === 4 ? "active" : "none"}
+              onClick={() => setCurrentLink(4)}
+            >
+              <Link to="/listCategory">
+                <GiTwirlCenter />
+                <span> Manage Category</span>
+              </Link>
+            </li>
+            <li
+              className={currentLink === 5 ? "active" : "none"}
+              onClick={() => setCurrentLink(5)}
+            >
+              <Link href="/listCategory">
+                <BsFillChatTextFill />
+                <span> Manage Profile</span>
+              </Link>
+            </li>
+            <li
+              className={currentLink === 6 ? "active" : "none"}
+              onClick={() => setCurrentLink(6)}
+            >
+              <Link href="/listCategory">
+                <IoSettings />
+                <span> Settings</span>
+              </Link>
+            </li>
+            
+            <div className="s">
+              <Link href="/login">
+                <FiLogOut />
+                <Link to="/login" className="logout" style={{backgroundColor:"white"}}>
+                  Logout
                 </Link>
-              </li>
-              <li
-                className={currentLink === 4 ? "active" : "none"}
-                onClick={() => setCurrentLink(4)}
-              >
-               <Link to='/listCategory'>
-                  <GiTwirlCenter />
-                  <span> Manage Category</span>
-                </Link>
-              </li>
-              <li
-                className={currentLink === 5 ? "active" : "none"}
-                onClick={() => setCurrentLink(5)}
-              >
-                <Link href="/listCategory">
-                  <BsFillChatTextFill />
-                  <span> Manage Profile</span>
-                </Link>
-              </li>
-              <li
-                className={currentLink === 6 ? "active" : "none"}
-                onClick={() => setCurrentLink(6)}
-              >
-                <Link href="/listCategory">
-                  <IoSettings />
-                  <span> Settings</span>
-                </Link>
-              </li>
-            </ul>
+              </Link>
+            </div>
+          </ul>
         </div>
       </ResponsiveNav>
     </>
