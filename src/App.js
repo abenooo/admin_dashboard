@@ -15,9 +15,16 @@ import Notification from "./componets/Notification";
 import UserDetails from "./componets/User/UserDetails";
 import CategoryDetails from "./componets/Category/CategoryDetails";
 import ArchiveDetails from "./componets/Archive/ArchiveDetails";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 // apollo client
-
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+// client pages
+import About from "./componets/Client/About";
+import Contact from "./componets/Client/Contact";
+import Home from "./componets/Client/Home";
+import FAQ from "./componets/Client/FAQ";
+import Navbar from "./componets/Client/Navbar";
+import Setting from "./componets/Client/Setting";
+import Footer from "./componets/Client/Footer";
 export default function App() {
   const client = new ApolloClient({
     uri: "http://localhost:1337/graphql",
@@ -111,8 +118,14 @@ export default function App() {
               </>
             }
           />
-          
-          
+          {/* for client  */}
+            <Route path="about" element={<About />}/>
+            <Route path="contact" element={<Contact />}/>
+            <Route path="home" element={<Home />}/>
+            <Route path="FAQ" element={<FAQ />}/>
+            <Route path="navbar" element={<Navbar />}/>
+            <Route path="setting" element={<Setting />}/>
+            <Route path="footer" element={<Footer />}/>
         </Routes>{" "}
       </ApolloProvider>
     </Div>
