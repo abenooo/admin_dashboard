@@ -76,6 +76,9 @@ export default function ListArchive() {
                           <th className="py-3 px-6 text-center">
                             Category name
                           </th>
+                          <th className="py-3 px-6 text-center">
+                            Category Description
+                          </th>
                           <th className="py-3 px-6 text-center">Action</th>
                         </tr>
                       </thead>
@@ -99,8 +102,8 @@ export default function ListArchive() {
                                 {review.created_at}
                               </th>
                               <th className="py-3 px-6 text-center">
-                                {/* {review.file[0].url} */}
                                 <img
+                                // alt="img"
                                   src={`http://localhost:1337${review.file[0].url}`}
                                   style={{
                                     height: "50px",
@@ -110,7 +113,10 @@ export default function ListArchive() {
                                 />
                               </th>
                               <th className="py-3 px-6 text-center">
-                                {/* {review.categories[0].title} */}
+                                {review.categories[0].title}
+                              </th>
+                              <th className="py-3 px-6 text-center">
+                                {review.categories[0].description}
                               </th>
                               <th className="py-3 px-6 text-center">
                                 <div className="flex item-center justify-center">

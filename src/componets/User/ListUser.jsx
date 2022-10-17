@@ -4,39 +4,60 @@ import { buttonStyles } from "../../componets/ReusableStyles";
 import { AiOutlinePlus } from "react-icons/ai";
 import { GiCancel } from "react-icons/gi";
 import { Link } from "react-router-dom";
-import Axios from "axios";
 import useFetch from "../../componets/hooks/useFetch";
 import axios from "axios";
 export default function ListArchive() {
+  // get
   const url = "http://localhost:1337";
-  const [archiveModal, setUserModal] = useState(false);
+  const [categoryModal, setCategoryModal] = useState(false);
   const { loading, data, error } = useFetch("http://localhost:1337/users");
 
-  // for post
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState("");
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const post = {
+  const [password, setPassword] = useState("");
+// put
+function updateCategory(){
+axios
+  .put('http://localhost:1337/categories/4/?populate=categories', {
+    data: {
       username,
       email,
-      role
+      password
+    },
+  })
+  .then(response => {
+    console.log("hi"+response);
+  })
+}
+
+ 
+
+ 
+// post
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const category = {
+      username,
+      email,
+      password,
+      role:{
+        "name":"authticated"
+      
+      }
     }
     try {
-      const res = await axios.post('http://localhost:1337/users',post)
-      if(res.status === 200 ){
-        alert(res.data)
+      const res = await axios.post('http://localhost:1337/users',category)
+      if(res.status === 'ok')
+      {
+       console.log(res)
       }
       else{
         alert(error)
       }
     } catch (error) {
-      alert(error)
+      console.log(error)
     }
   };
-
   // const {loading,data,error} = useQuery(ARCHIVES)
   if (loading) return <p className="">loading</p>;
   if (error) return <p>error</p>;
@@ -52,7 +73,9 @@ export default function ListArchive() {
                 <AiOutlinePlus />
               </div>
               <div className="content">
-                <button onClick={() => setUserModal(true)}>Add User</button>
+                <button onClick={() => setCategoryModal(true)}>
+                  Add User
+                </button>
               </div>
             </div>
           </div>
@@ -65,39 +88,38 @@ export default function ListArchive() {
                     <table className="min-w-max w-full table-auto">
                       <thead>
                         <tr className="bg-gray-600 text-gray-100 uppercase text-sm leading-normal">
-                          <th className="py-3 px-6 text-left">Number</th>
-                          <th className="py-3 px-6 text-left">Firstname</th>
-                          <th className="py-3 px-6 text-left">Lastname</th>
+                          <th className="py-3 px-6 text-left">ID</th>
+                          <th className="py-3 px-6 text-left">username</th>
                           <th className="py-3 px-6 text-center">email</th>
-                          <th className="py-3 px-6 text-center">Status</th>
-                          <th className="py-3 px-6 text-center">Rule</th>
-                          <th className="py-3 px-6 text-center">Action</th>
+                          <th className="py-3 px-6 text-center">role name</th>
+                          <th className="py-3 px-6 text-center">role type</th>
+                          <th className="py-3 px-6 text-center">role description</th>
+                          <th className="py-3 px-6 text-center">operation</th>
                         </tr>
                       </thead>
-                      {data.map((review) => (
+                      {data.map((review,index) => (
                         <tbody key={review.id}>
-                          <tr className="bg-gray-200 text-gray-600 text-sm leading-normal">
-                            <th className="py-3 px-6 text-left">{review.id}</th>
+                          <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                            <th className="py-3 px-6 text-left">{index}</th>
                             <th className="py-3 px-6 text-left">
                               {review.username}
                             </th>
-                            <th className="py-3 px-6 text-left">
+                            <th className="py-3 px-6 text-center">
                               {review.email}
                             </th>
                             <th className="py-3 px-6 text-center">
-                              {/* <img src={`${url}${review.file.data.url}`}></img> */}
-                              {review.confirmed}
+                              {review.role.name}
                             </th>
                             <th className="py-3 px-6 text-center">
-                              {review.Provider}
+                              {review.role.type}
                             </th>
                             <th className="py-3 px-6 text-center">
-                              {review.role.name === "Public" ? "User" : "Admin"}
+                              {review.role.description}
                             </th>
                             <th className="py-3 px-6 text-center">
                               <div className="flex item-center justify-center">
                                 <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                  <Link to={`/userDetails/${review.id}`}>
+                                  <Link to={`/categoryDetails/${review.id}`}>
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       fill="none"
@@ -135,6 +157,7 @@ export default function ListArchive() {
                                   </svg>
                                 </div>
                                 <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                  <button onClick={updateCategory}>
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -147,7 +170,7 @@ export default function ListArchive() {
                                       strokeWidth="2"
                                       d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                                     />
-                                  </svg>
+                                  </svg></button>
                                 </div>
                               </div>
                             </th>
@@ -171,157 +194,120 @@ export default function ListArchive() {
           </div>
         </div>
       </Section>
-      {archiveModal ? (
+      {categoryModal ? (
         <Section>
-          <Section>
-            <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-              <div className="relative w-9/12 my-6 mx-auto max-w-3xl">
-                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                  <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
-                    <h3 className="text-3xl font=semibold">Add New User</h3>
-                    <button
-                      className="bg-transparent border-0 text-black float-right"
-                      onClick={() => setUserModal(false)}
-                    >
-                      {/* <span className="text-black opacity-7 h-6 w-6 text-xl block bg-gray-400 py-0 rounded-full">
-                  x
-                </span> */}
-                      <GiCancel className="h-6 w-6" />
-                    </button>
-                  </div>
-                  <div className="py-6 px-6 lg:px-8">
-                    <form className="space-y-6" onSubmit={onSubmit}>
-                      <div>
-                        <label
-                          htmlFor="text"
-                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                        >
-                          First name
-                        </label>
-                        <input
-                          type="text"
-                          name="title"
-                          id="title"
-                          value={username}
-                          onChange={(e) => setUsername(e.target.value)}
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                          placeholder="enter User name "
-                          required
-                        />
-                      </div>
-                      {/* <div>
+          <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+            <div className="relative w-9/12 my-6 mx-auto max-w-3xl">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
+                  <h3 className="text-3xl font=semibold">Add New user</h3>
+                  <button
+                    className="bg-transparent border-0 text-black float-right"
+                    onClick={() => setCategoryModal(false)}
+                  >
+                    {/* <span className="text-black opacity-7 h-6 w-6 text-xl block bg-gray-400 py-0 rounded-full">
+                x
+              </span> */}
+                    <GiCancel className="h-6 w-6" />
+                  </button>
+                </div>
+                <div className="py-6 px-6 lg:px-8">
+                  <form className="space-y-6" onSubmit={onSubmit}>
+                    <div>
                       <label
                         htmlFor="text"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                       >
-                        Last name
+                        User title
                       </label>
                       <input
                         type="text"
                         name="title"
                         id="title"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        placeholder="enter User name "
+                        placeholder="enter User title"
                         required
                       />
-                    </div> */}
-                      <div>
-                        <label
-                          htmlFor="text"
-                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                        >
-                          Role
-                        </label>
-                        <input
-                          type="text"
-                          name="title"
-                          value={role}
-                          onChange={(e) => setRole(e.target.value)}
-                          id="title"
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                          placeholder="enter User name "
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="text"
-                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                        >
-                          Email
-                        </label>
-                        <input
-                          type="text"
-                          name="title"
-                          id="title"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                          placeholder="enter User name "
-                          required
-                        />
-                      </div>
-
-                      {/* <div>
+                    </div>
+                    <div>
                       <label
                         htmlFor="text"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                       >
-                        Category Description
+                        User title
                       </label>
-                      <textarea
-                        id="description"
-                        rows="4"
-                        placeholder="enter category description (optional)"
+                      <input
+                        type="text"
+                        name="title"
+                        id="title"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                      ></textarea>
-                      {/* <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="enter archive title" required/> */}
-                      {/* </div> */}
-                      <div className="flex justify-between">
-                      <button
-                        type="submit"
-                        className=" mx-6 w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                      >
-                        Add New Category
-                      </button>
-                      </div>
-                    </form>
-                  </div>
-                  <div className="flex items-center justify-center mx-6 p-6 border-t border-solid border-blueGray-200 rounded-b">
-                    <div className="flex flex-row flex-wrap justify-around">
-                      <button
-                        onClick={() => setUserModal(false)}
-                        type="submit"
-                        className=" mx-6 w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        type="submit"
-                        className=" mx-6 w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                      >
-                        Add New Category
-                      </button>
+                        placeholder="enter User title"
+                        required
+                      />
                     </div>
-                    {/* <button
-                className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
-                type="button"
-                onClick={() => setUserModal(false)}
-              >
-                Close
-              </button> */}
-                    {/* <button
-                className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                type="button"
-                onClick={() => setUserModal(false)}
-              >
-                Submit
-              </button> */}
+                    <div>
+                      <label
+                        htmlFor="text"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        User email
+                      </label>
+                      <input
+                        id="description"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        rows="4"
+                        placeholder="enter user  email"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      />
+                      {/* <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="enter archive title" required/> */}
+                    </div>
+                    <div className="flex justify-between">  <button
+                      type="submit"
+                      className=" mx-6 w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Add New User
+                    </button></div>
+                  </form>
+                </div>
+                <div className="flex items-center justify-center mx-6 p-6 border-t border-solid border-blueGray-200 rounded-b">
+                  <div className="flex flex-row flex-wrap justify-around">
+                    <button
+                      onClick={() => setCategoryModal(false)}
+                      type="submit"
+                      className=" mx-6 w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className=" mx-6 w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Add New Category
+                    </button>
                   </div>
+                  {/* <button
+              className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
+              type="button"
+              onClick={() => setCategoryModal(false)}
+            >
+              Close
+            </button> */}
+                  {/* <button
+              className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+              type="button"
+              onClick={() => setCategoryModal(false)}
+            >
+              Submit
+            </button> */}
                 </div>
               </div>
             </div>
-          </Section>
+          </div>
         </Section>
       ) : null}
     </>
