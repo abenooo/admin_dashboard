@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from "react";
+import { Link } from "react-router-dom";
 function Navbar() {
     const [navbar, setNavbar] = useState(false);
 
@@ -8,9 +9,9 @@ function Navbar() {
             <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                 <div>
                     <div className="flex items-center justify-between py-3 md:py-5 md:block">
-                        <a href="javascript:void(0)">
-                            <h2 className="text-2xl font-bold">LOGOs</h2>
-                        </a>
+                        <Link to="./">
+                            <h2 className="text-2xl font-bold">LOGO</h2>
+                        </Link>
                         <div className="md:hidden">
                             <button
                                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
@@ -57,19 +58,19 @@ function Navbar() {
                     >
                         <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
                             <li className="text-white hover:text-gray-300">
-                                <a href="javascript:void(0)">Home</a>
+                                <Link to="./">Home</Link>
                             </li>
                             <li className="text-white hover:text-gray-200">
-                                <a href="javascript:void(0)">About US</a>
+                                <Link to="/about">About US</Link>
                             </li>
                             <li className="text-white hover:text-gray-200">
-                                <a href="javascript:void(0)">Contact US</a>
+                                <Link to="/contact">Contact US</Link>
                             </li>
                             <li className="text-white hover:text-gray-200">
-                                <a href="javascript:void(0)">FAQ</a>
+                                <Link to="/faq">FAQ</Link>
                             </li>
                             <li className="text-white hover:text-gray-200">
-                                <a href="javascript:void(0)">More</a>
+                                <Link to="./">More</Link>
                             </li>
                            
                         </ul>
