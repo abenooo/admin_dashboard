@@ -72,7 +72,7 @@ function Contact() {
                     Our Location
                   </h4>
                   <p className="text-base text-body-color">
-                    99 S.t Jomblo Park Pekanbaru 28292. Indonesia
+                    Gambia Street, P.O.Box 255 Addis Ababa.
                   </p>
                 </div>
               </div>
@@ -110,7 +110,8 @@ function Contact() {
                     Phone Number
                   </h4>
                   <p className="text-base text-body-color">
-                    (+62)81 414 257 9980
+                    Tel: 251-551-50-04/251-122-87-55 Fax:
+                    251-551-45-22/251-122-89-66
                   </p>
                 </div>
               </div>
@@ -146,7 +147,7 @@ function Contact() {
                     Email Address
                   </h4>
                   <p className="text-base text-body-color">
-                    info@yourdomain.com
+                  Email: cbe@combanketh.et 
                   </p>
                 </div>
               </div>
