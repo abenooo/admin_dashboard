@@ -14,9 +14,6 @@ function Footer() {
                 aria-label="Footer Nav"
                 className="mt-6 flex flex-col space-y-4 text-sm text-gray-300"
               >
-              
-             
-              
                 <a className="inline-block" href="">
                   {" "}
                   CBE Profile{" "}
@@ -75,25 +72,26 @@ function Footer() {
                 </a>
               </nav>
             </div>
+
             <div className="col-span-2 border-t border-white/10 pt-6 sm:col-span-1">
-              <p className="font-bold text-white">Legal</p>
+              <p className="font-bold text-white">Work With Us</p>
 
               <nav className="mt-6 flex flex-col space-y-4 text-sm text-gray-300">
                 <a className="inline-block" href="">
                   {" "}
-                  Accessibility{" "}
+                  Vacancy{" "}
                 </a>
                 <a className="inline-block" href="">
                   {" "}
-                  Returns Policy{" "}
+                  Tenders{" "}
                 </a>
                 <a className="inline-block" href="">
                   {" "}
-                  Refund Policy{" "}
+                  CBE Birr Agents{" "}
                 </a>
                 <a className="inline-block" href="">
                   {" "}
-                  Hiring Statistics{" "}
+                  POS{" "}
                 </a>
               </nav>
             </div>
@@ -111,21 +109,21 @@ function Footer() {
                 </a>
               </nav>
             </div>
-            
           </div>
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             <p className="text-center text-xs text-gray-400 lg:text-left">
-              Copyright &copy; 2022. Company Name. All rights reserved.
+              Copyright &copy; 2022. Comercial Bank of Ethiopia.. All rights
+              reserved.
             </p>
 
-            <nav className="flex justify-center gap-4 text-xs text-gray-400 lg:justify-end">
+            <div className="flex justify-center gap-4 text-xs text-gray-400 lg:justify-end">
               <a href=""> Terms & Conditions </a>
               <a href=""> Privacy Policy </a>
               <a href=""> Cookies </a>
-            </nav>
+            </div>
           </div>
         </div>
       </div>
