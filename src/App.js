@@ -20,11 +20,14 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 // client pages
 import About from "./componets/Client/About";
 import Contact from "./componets/Client/Contact";
+import Category from "./componets/Client/Category";
 import Home from "./componets/Client/Home";
 import FAQ from "./componets/Client/FAQ";
 import Navbar from "./componets/Client/Navbar";
 import Setting from "./componets/Client/Setting";
 import Footer from "./componets/Client/Footer";
+import Otp from "./componets/Client/Otp";
+import ArchiveCategory from "./componets/Client/ArchiveCategory";
 export default function App() {
   const client = new ApolloClient({
     uri: "http://localhost:1337/graphql",
@@ -39,7 +42,6 @@ export default function App() {
             path="/"
             element={
               <>
-               
                 <Notification />
                 <Sidebar />
                 <Dashboard />
@@ -87,9 +89,8 @@ export default function App() {
             }
           />
           {/* not found page */}
-          <Route path="login" element={<Login />}/>
+          <Route path="login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
-
 
           <Route
             path="/userDetails/:id"
@@ -109,7 +110,7 @@ export default function App() {
               </>
             }
           />
-             <Route
+          <Route
             path="/archiveDetails/:id"
             element={
               <>
@@ -119,13 +120,39 @@ export default function App() {
             }
           />
           {/* for client  */}
-            <Route path="about" element={<About />}/>
-            <Route path="contact" element={<Contact />}/>
-            <Route path="home" element={<Home />}/>
-            <Route path="FAQ" element={<FAQ />}/>
-            <Route path="navbar" element={<Navbar />}/>
-            <Route path="setting" element={<Setting />}/>
-            <Route path="footer" element={<Footer />}/>
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route
+            path="home"
+            element={
+              <>
+                <Navbar />
+                <Home />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="category"
+            element={
+              <>
+                <Navbar />
+                <Category />
+                <Footer />
+              </>
+            }
+          />
+          <Route path="/archive/category" element={<ArchiveCategory />} />
+          <Route path="faq" element={<FAQ />} />
+          <Route path="navbar" element={<Navbar />} />
+          <Route path="setting" element={<Setting />} />
+          <Route path="footer" element={<Footer />} />
+          <Route
+            path="otp"
+            element={
+                <Otp />
+            }
+          />
         </Routes>{" "}
       </ApolloProvider>
     </Div>
