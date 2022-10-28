@@ -12,3 +12,8 @@ componet dashboard,sidebar,navbar,manage user, manager profile,manage archive, m
 ![admin dashboard](https://user-images.githubusercontent.com/52881874/194694922-f6920994-098f-4e22-a4df-7636d83a2e84.png)
 ![archive](https://user-images.githubusercontent.com/52881874/194694923-22b57297-0a87-4dd3-a686-1fa5868607e9.png)
 
+[](url)
+![Screen Shot 2022-10-28 at 12 01 36](https://user-images.githubusercontent.com/52881874/198548643-4b6826e4-ac6f-48d4-aadd-2cf51c51127a.png)
+![Screen Shot 2022-10-28 at 12 01 21](https://user-images.githubusercontent.com/52881874/198548652-51a70305-2c52-49c0-887d-b514405b6532.png)
+![Screen Shot 2022-10-28 at 12 01 49](https://user-images.githubusercontent.com/52881874/198548658-4b804bc5-8338-4877-8f55-fb41530bba5a.png)
+
