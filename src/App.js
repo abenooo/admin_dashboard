@@ -13,6 +13,7 @@ import { Routes, Route } from "react-router-dom";
 import NotFound from "./componets/404";
 import Notification from "./componets/Notification";
 import UserDetails from "./componets/User/UserDetails";
+import Registers from "./componets/User/Register";
 import CategoryDetails from "./componets/Category/CategoryDetails";
 import ArchiveDetails from "./componets/Archive/ArchiveDetails";
 // apollo client
@@ -107,6 +108,15 @@ export default function App() {
               <>
                 <Sidebar />
                 <CategoryDetails />
+              </>
+            }
+          />
+              <Route
+            path="/register"
+            element={
+              <>
+                <Sidebar />
+                <Registers />
               </>
             }
           />
