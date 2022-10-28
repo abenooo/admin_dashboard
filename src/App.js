@@ -28,7 +28,7 @@ import Navbar from "./componets/Client/Navbar";
 import Setting from "./componets/Client/Setting";
 import Footer from "./componets/Client/Footer";
 import Otp from "./componets/Client/Otp";
-import ArchiveCategory from "./componets/Client/ArchiveCategory";
+// import ArchiveCategory from "./componets/Client/ArchiveCategory";
 export default function App() {
   const client = new ApolloClient({
     uri: "http://localhost:1337/graphql",
@@ -152,7 +152,7 @@ export default function App() {
               </>
             }
           />
-          <Route path="/archive/category" element={<ArchiveCategory />} />
+          {/* <Route path="/archive/category" element={<ArchiveCategory />} /> */}
           <Route path="faq" element={<FAQ />} />
           <Route path="navbar" element={<Navbar />} />
           <Route path="setting" element={<Setting />} />
